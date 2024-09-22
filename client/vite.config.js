@@ -11,5 +11,14 @@ export default defineConfig({
       },
     },
   },
+
   plugins: [react()],
 });
+// optimizeDeps: {
+//   exclude: ["@mapbox"],
+// },
+// build: {
+//   rollupOptions: {
+//     external: ["jsonwebtoken", "safe-buffer", "buffer", "crypto"],
+//   },
+// },
