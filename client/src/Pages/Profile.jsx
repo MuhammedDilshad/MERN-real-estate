@@ -31,7 +31,6 @@ function Profile() {
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
-  console.log(userListings, "userListings");
 
   const dispatch = useDispatch();
 
