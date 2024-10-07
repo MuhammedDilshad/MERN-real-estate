@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { UserAPI } from "../Api/UserApi.js";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useRef } from "react";
 import {
@@ -91,10 +93,7 @@ function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/server/user/delete/${currentUser._id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
+      const data = await UserAPI.delete(`/delete/${currentUser._id}`);
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
         return;
@@ -108,8 +107,7 @@ function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("/server/auth/signout");
-      const data = await res.json();
+      const data = await axios.get("/server/auth/signout");
       if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
         return;
@@ -123,8 +121,9 @@ function Profile() {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`/server/user/listings/${currentUser._id}`);
-      const data = await res.json();
+      const res = await UserAPI.get(`/listings/${currentUser._id}`);
+      const data = res.data;
+
       if (data.success === false) {
         setShowListingsError(true);
         return;

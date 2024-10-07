@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "aws-sdk": "^2.1691.0",
+    "axios": "^1.7.7",
     "esbuild-plugin-ignore": "^1.1.1",
     "firebase": "^10.13.2",
     "mock-aws-s3": "^4.0.2",
